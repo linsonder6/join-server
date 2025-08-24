@@ -9,6 +9,10 @@
       text-align: center;
       margin-top: 50px;
     }
+    a {
+      color: blue;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -16,20 +20,28 @@
   <p>If nothing happens, make sure Roblox is installed.</p>
 
   <script>
-    // Default PlaceId for your game
-    const placeId = "606849621";
+    const placeId = "606849621"; // Replace with your game
 
-    // Get the jobid from query string
+    // Get jobid from URL query string
     const urlParams = new URLSearchParams(window.location.search);
     const jobId = urlParams.get("jobid");
 
     if (jobId) {
       const robloxUrl = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${jobId}`;
+      
       // Redirect to Roblox
       window.location.href = robloxUrl;
+
+      // Try to close tab after 1 second
+      setTimeout(() => {
+        window.close();
+      }, 1000);
+      
     } else {
       document.body.innerHTML = "<p>Error: jobid parameter missing in URL.</p>";
     }
   </script>
+
+  <p>If the tab did not close automatically, <a href="#" onclick="window.close()">click here to close it</a>.</p>
 </body>
 </html>
