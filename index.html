@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Join Roblox Server</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Redirecting to Roblox...</h1>
+  <p>If nothing happens, make sure Roblox is installed.</p>
+
+  <script>
+    // Default PlaceId for your game
+    const placeId = "606849621";
+
+    // Get the jobid from query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const jobId = urlParams.get("jobid");
+
+    if (jobId) {
+      const robloxUrl = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${jobId}`;
+      // Redirect to Roblox
+      window.location.href = robloxUrl;
+    } else {
+      document.body.innerHTML = "<p>Error: jobid parameter missing in URL.</p>";
+    }
+  </script>
+</body>
+</html>
